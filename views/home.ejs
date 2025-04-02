@@ -1,66 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zagg Clubhouse</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
     <div class="header">
-        <div class="title">
-            <h1>Welcome in Zagg's Clubhouse</h1>
-            <h3><i>To see post information you have to create a Zagg-Account</i></h3>
-        </div>
+      <div class="title">
+        <h1>Welcome in Zagg's Clubhouse</h1>
+        <h3>
+          <i>To see post information you have to create a Zagg-Account</i>
+        </h3>
+      </div>
+      <div class="links">
         <a href="/login">Login</a>
         <a href="/sign-up">Sign-Up</a>
+      </div>
     </div>
-    <form action="" method="post">
-        <h2>Publish a Post</h2>
-        <div class="title">
-            <label for="title">Title: </label>
-            <input name="title" type="text">
-        </div>
-        <div class="content">
-            <label for="content">Content:</label>
-            <textarea name="content" id="content"></textarea>
-        </div>
-        <button type="submit">Post</button>
+    <form action="" method="post" class="form-post">
+      <h2>Publish a Post</h2>
+      <div class="title">
+        <label for="title">Title: </label>
+        <input name="title" type="text" />
+      </div>
+      <div class="content">
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" rows="5"></textarea>
+      </div>
+      <button type="submit">Post</button>
     </form>
-    <div class="err">
-        <% if(locals.err){ %>
-            <% if (err.title) { %>
-                <p><%= err.title.msg %></p>
-            <% } %>    
-            <% if (err.content) { %>
-                <p><%= err.content.msg %></p>
-            <% } %>           
-             <% if (err.error) { %>
-                <p><%= err.error.msg %></p>
-            <% } %> 
-            <% if (err.database) { %>
-                <p><%= err.database.msg %></p>
-            <% } %>      
-        <% } %>
+    <div <% if(locals.err) {%> class="err" <%}%> >
+      <% if(locals.err){ %> 
+        <% if (err.title) { %>
+            <p><%= err.title.msg %></p>
+        <% } %> <% if (err.content) { %>
+            <p><%= err.content.msg %></p>
+         <% } %> <% if (err.error) { %>
+            <p><%= err.error.msg %></p>
+        <% } %> <% if (err.database) { %>
+            <p><%= err.database.msg %></p>
+      <% } %> <% } %>
     </div>
     <div class="posts">
-        <% if(locals.posts){ %>
-            <% posts.forEach(post => { %>
-                <div class="post">
-                    <h3><%= post.title %></h3>
-                    <p><%= post.content %></p>
-                    <div class="info">
-                        <% if(isAuth){ %>
-                            <p><%= post.username %></p>
-                            <p><%= post.time_stamp %></p>
-                        <% } else{ %>
-                            <p class="anonym">anonym</p>
-                            <p class="anonym">anonym</p>
-                        <% } %>
-                    </div>
-                </div>
-            <% }) %>
-        <% } %>
+      <% if(locals.posts){ %> <% posts.forEach(post => { %>
+      <div class="post">
+        <h3><%= post.title %></h3>
+        <p class="content"><%= post.content %></p>
+        <div class="info">
+          <% if(isAuth){ %>
+          <i>@<%= post.username %></i>
+          <p>
+            <svg
+              fill="#000000"
+              width="25px"
+              height="25px"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M6,22H18a3,3,0,0,0,3-3V7a2,2,0,0,0-2-2H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H5A2,2,0,0,0,3,7V19A3,3,0,0,0,6,22ZM5,12.5a.5.5,0,0,1,.5-.5h13a.5.5,0,0,1,.5.5V19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1Z"
+                ></path>
+              </g>
+            </svg>
+              <%= post.time_stamp %>
+          </p>
+          <% } else{ %>
+          <p class="anonym">@anonym</p>
+          <p class="anonym">            <svg
+            fill="#000000"
+            width="25px"
+            height="25px"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M6,22H18a3,3,0,0,0,3-3V7a2,2,0,0,0-2-2H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H5A2,2,0,0,0,3,7V19A3,3,0,0,0,6,22ZM5,12.5a.5.5,0,0,1,.5-.5h13a.5.5,0,0,1,.5.5V19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1Z"
+              ></path>
+            </g>
+          </svg>nothing to see</p>
+          <% } %>
+        </div>
+      </div>
+      <% }) %> <% } %>
     </div>
-</body>
+  </body>
 </html>

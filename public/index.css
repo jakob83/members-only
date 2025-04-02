@@ -1,3 +1,169 @@
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+body {
+  display: grid;
+  grid-template-rows: 200px 300px 1fr 10fr;
+  position: relative;
+  min-height: 100vh;
+}
+.header {
+  margin-top: 30px;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: min(1300px, 100%);
+  margin-bottom: 70px;
+}
+
+@media (max-width: 500px) {
+  .header .links a {
+    padding: 5px 10px;
+  }
+}
+
+.header .links {
+  display: flex;
+  gap: 70px;
+}
+.header a {
+  text-decoration: none;
+  color: aliceblue;
+  background-color: chocolate;
+  padding: 20px 50px;
+  box-shadow: 5px 5px 10px rgb(90, 90, 90);
+  border-radius: 10px;
+  width: 70px;
+  text-align: center;
+  transition: all 0.15s ease-in-out;
+}
+.header a:hover {
+  box-shadow: 10px 10px 25px black;
+  background-color: rgb(160, 82, 26);
+}
+
+.form-post {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: max(50%, 300px);
+  border: 5px solid coral;
+  border-radius: 10px;
+  padding: 12px 30px;
+}
+.form-post h2 {
+  margin: 0;
+}
+.form-post div {
+  display: flex;
+  gap: 60px;
+}
+.form-post div label {
+  width: 30px;
+}
+.form-post div input,
+.form-post div textarea {
+  width: 60%;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+.form-post button {
+  align-self: center;
+  padding: 15px 30px;
+  background-color: coral;
+  border: none;
+  border-radius: 10px;
+  color: aliceblue;
+}
+
+.posts {
+  justify-self: center;
+  width: max(50vw, 300px);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 241, 230);
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+.post h3 {
+  font-size: 1.6rem;
+}
+
+.post .info {
+  display: flex;
+  gap: 120px;
+}
+.post .info p,
+.post .info i {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.err {
+  padding: 20px 20px;
+  color: red;
+  border: red;
+  background-color: rgb(255, 160, 160);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: fit-content;
+  justify-self: center;
+  width: max(300px, 40%);
+}
+
+/* Login and Sign Up*/
+.login-form,
+.sign-up-form {
+  margin: auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(255, 241, 230);
+  width: min(700px, 100vw);
+  padding: 5vh 15vw;
+}
+.login-form div,
+.sign-up-form div {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.login-form input,
+.sign-up-form input {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+}
+.login-form button,
+.sign-up-form button {
+  align-self: center;
+  padding: 15px 30px;
+  background-color: coral;
+  border: none;
+  border-radius: 10px;
+}
+.login-form label,
+.sign-up-form label {
+  width: 130px;
+}
+
+.anonym {
+  filter: blur(2px);
 }
